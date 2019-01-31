@@ -75,7 +75,27 @@ export const constantRouterMap = [{
             path: 'funeng',
             component: () =>
                 import ('@/views/funeng/index')
-        }, ]
+        }, {
+            path: 'instDynamics',
+            component: () =>
+                import ('@/views/instDynamics/index')
+        },{
+            path: 'mediaCoverage',
+            component: () =>
+                import ('@/views/mediaCoverage/index')
+        }, {
+            path: 'newLifeStory',
+            component: () =>
+                import ('@/views/newLifeStory/index')
+        }, {
+            path: 'orgDynamics',
+            component: () =>
+                import ('@/views/orgDynamics/index')
+        }, {
+            path: 'relatedPolicies',
+            component: () =>
+                import ('@/views/relatedPolicies/index')
+        },  ]
     },
     { path: '*', redirect: '/404', hidden: true }
 ]

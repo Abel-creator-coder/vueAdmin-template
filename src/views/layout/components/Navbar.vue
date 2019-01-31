@@ -27,11 +27,11 @@
         </div>
         <div :class="{'active':navStatus.shehui}" @mouseenter="godetail(5)" @mouseleave="outdetail(5)">社 会 影 响
           <ul v-show="navStatus.shehui">
-            <li>机构动态</li>
-            <li>媒体报道</li>
-            <li>新生命故事</li>
-            <li>相关组织动态</li>
-            <li>相关政策</li>
+            <li @click="goPage('instDynamics')">机构动态</li>
+            <li @click="goPage('mediaCoverage')">媒体报道</li>
+            <li @click="goPage('newLifeStory')">新生命故事</li>
+            <li @click="goPage('orgDynamics')">组织动态</li>
+            <li @click="goPage('relatedPolicies')">相关政策</li>
           </ul>
         </div>
         <div :class="{'active':navStatus.xinxi}" @mouseenter="godetail(6)" @mouseleave="outdetail(6)">信 息 公 开
