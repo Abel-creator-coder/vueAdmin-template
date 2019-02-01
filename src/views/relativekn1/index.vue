@@ -3,18 +3,18 @@
   	<div class="brumbWrap">
   		<span>您的位置：关于我们>脊椎损伤>相关知识</span>
   	</div>
-  	<p style="font-size:18px;color:#333333;width:600px;margin:0 auto;text-align:left;">每年多达72万人出现脊髓损伤</p>
-    <div class="contentWrap">
+  	<p style="font-size:18px;color:#333333;width:600px;margin:0 auto;text-align:left;">{{item.title}}</p>
+    <!-- <div class="contentWrap">
       <p class="content">2013年12月2日 | 日内瓦 - 每年发生脊髓损伤的人有50万之多。脊髓损伤者出现过早死亡的可能性要高出二至五倍，其中低收2013年12月2日 | 日内瓦 - 每年发生脊髓损伤的人有50万之多。脊髓损伤者出现过早死亡的可能性要高出二至五倍，其中低收</p>
-    </div>
-    <div style="width: 600px;margin:0 auto;">
+    </div> -->
+    <!-- <div style="width: 600px;margin:0 auto;">
       <img :src="bg4" style="width: 600px;">
-    </div>
+    </div> -->
     <div class="contentWrap">
-      <p class="title"> 「脊髓损伤伤友」 </p>
-      <p class="content">（亦称截瘫及高位截瘫，是公认的肢体残障中最痛苦、最具康复价值、最具社会价值创造潜能的重度残障群体。 目前，我国现有脊髓损伤伤友约</p>
+      <p class="title"> {{item.intro}} </p>
+      <p class="content" v-html="item.content"></p>
     </div>
-    <div class="contentWrap">
+    <!-- <div class="contentWrap">
       <p class="title">「脊髓损伤者面临的挑战」</p>
       <p class="content">对于一个原本行动、生活自理都无碍的人来说，脊髓损伤无疑是一个巨大的创痛，脊伤者所面临的困难与挑战包括以下几项： 1. 自我照顾</p>
     </div>
@@ -37,7 +37,7 @@
     <div class="contentWrap">
       <p class="title">脊髓损伤的潜能：</p>
       <p class="content">脊髓损伤伤友大部分都是后天受伤致残，大多数受过良好的教育、大多数具有宝贵的社会经历、大多数是家庭经济的主要负担者、大多数是单位</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -54,10 +54,12 @@ export default {
     	people1,
       checkMore,
       bg4,
+      item:{}
     }
   },
   mounted() {
-  	
+    // console.log(this.$route.params);
+  	this.item = this.$route.params;
   },
   beforeDestroy() {
     

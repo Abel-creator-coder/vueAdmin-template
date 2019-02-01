@@ -16,15 +16,17 @@
     <div class="content1Wrap">
       <p class="title">金种子赋能</p>
       <div class="left">
-        <p class="title">脊髓损伤者金种子培养计划</p>
-        <p class="content">「金种子培养计划」是北京新起点公益基金会发起的，旨在通过专业教育和培养，培育已康复，具有服务精神、具备丰富康复经验的脊髓损伤者</p>
+        <p class="title">{{hope.name}}</p>
+        <p class="content">{{hope.intro}}</p>
         <a href="" class="checkMore">查看详情</a>
       </div>
-    <img :src="bg3" class="bg3">
+    <img :src="hope.image" class="bg3">
+    <!-- <img :src="bg3" class="bg3"> -->
     </div>
     <div class="content2Wrap">
       <p style="font-size: 18px;color:#333333;margin-bottom:20px;">资助流程</p>
-      <img :src="pipe" style="width: 600px;height: 83px;">
+      <!-- <img :src="pipe" style="width: 600px;height: 83px;"> -->
+      <img :src="hope.flow" style="width: 600px;height: 83px;">
     </div>
     <div class="content3Wrap">
       <p class="title">相关知识</p>
@@ -46,7 +48,8 @@
     </div>
     <div class="content4Wrap">
       <p style="font-size: 18px;color:#333333;margin-bottom:20px;">项目分布图</p>
-      <img :src="map" class="map">
+      <!-- <img :src="map" class="map"> -->
+      <img :src="hope.map" class="map">
       <div class="right">
         <p class="text">上海长海医院</p>
         <p class="text">上海长海医院</p>
@@ -86,10 +89,15 @@ export default {
       checkMore,
       people2,
       map,
+      hope:{}
     }
   },
   mounted() {
-  	
+  	this.$store.dispatch('Gethope').then((data) => {
+      // console.log(data);
+      this.hope = data;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     

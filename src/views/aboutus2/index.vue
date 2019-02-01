@@ -13,9 +13,13 @@
   		<span>您的位置：关于我们 > 脊椎损伤</span>
   	</div>
   	<p style="font-size:18px;color:#333333;width:600px;margin:0 auto;text-align:left;">脊髓损伤</p>
-    <div class="contentWrap" v-for="(item,index) in jizuisunshang" :key="index">
+    <!-- <div class="contentWrap" v-for="(item,index) in jizuisunshang" :key="index">
       <p class="title"> {{item.title}} </p>
       <p class="content" v-html="item.content"></p>
+    </div> -->
+    <div class="contentWrap">
+      <p class="title"> {{jizuisunshang.conKey}} </p>
+      <p class="content" v-html="jizuisunshang.conVal"></p>
     </div>
     <!-- <div class="contentWrap">
       <p class="title">「脊髓损伤」</p>
@@ -38,7 +42,7 @@
     </div>
     <div class="content1Wrap">
       <p class="title">相关知识</p>
-      <div @click="goDetail" :class="{'listWrap':true,'listactive':listactive}" @mouseenter="listin" @mouseleave="listout">
+      <!-- <div @click="goDetail" :class="{'listWrap':true,'listactive':listactive}" @mouseenter="listin" @mouseleave="listout">
         <img :src="people2">
         <div class="listContentWrap">
           <p class="title">每年多达72万人出现脊椎损伤</p>
@@ -50,6 +54,13 @@
         <div class="listContentWrap">
           <p class="title">每年多达72万人出现脊椎损伤</p>
           <p class="content">013年12月2日 | 日内瓦 - 每年发生脊髓损伤的人有50万之多。脊髓损伤者出现过早死亡的可能性要高出二至五倍，其中低收入</p>
+        </div>
+      </div> -->
+      <div class="listWrap" v-for="(item,index) in relativekn" :key="index" @click="goDetail(item)" :class="{'listWrap':true,'listactive':listactive == index}" @mouseenter="listin(index)" @mouseleave="listout(index)">
+        <img :src="item.image">
+        <div class="listContentWrap">
+          <p class="title">{{item.title}}</p>
+          <p class="content">{{item.intro}}</p>
         </div>
       </div>
       <img :src="checkMore" class="checkMore" @click="goMore">
@@ -69,12 +80,17 @@ export default {
     	people1,
       checkMore,
       listactive:false,
-      jizuisunshang:[]
+      jizuisunshang:{},
+      relativekn:[]
     }
   },
   mounted() {
   	this.$store.dispatch('Getjizuisunshang').then((data) => {
-      this.jizuisunshang = data.list;
+      this.jizuisunshang = data;
+    }).catch(() => {
+    })
+    this.$store.dispatch('Getrelativekn',{ pageNum: 0, pageSize: 3 }).then((data) => {
+      this.relativekn = data.list;
     }).catch(() => {
     })
   },
@@ -85,14 +101,14 @@ export default {
     goMore(){
       this.$router.push('relativekn');
     },
-    goDetail(){
-      this.$router.push('relativekn1');
+    goDetail(item){
+      this.$router.push({name:'relativekn1',params:item});
     },
-    listin(){
-      this.listactive = true;
+    listin(index){
+      this.listactive = index;
     },
     listout(){
-      this.listactive = false;
+      this.listactive = -1;
     }
   }
 }

@@ -27,27 +27,27 @@
         </div>
         <div :class="{'active':navStatus.shehui}" @mouseenter="godetail(5)" @mouseleave="outdetail(5)">社 会 影 响
           <ul v-show="navStatus.shehui">
-            <li>机构动态</li>
-            <li>媒体报道</li>
-            <li>新生命故事</li>
-            <li>相关组织动态</li>
-            <li>相关政策</li>
+            <li @click="goPage('instDynamics')">机构动态</li>
+            <li @click="goPage('mediaCoverage')">媒体报道</li>
+            <li @click="goPage('newLifeStory')">新生命故事</li>
+            <li @click="goPage('orgDynamics')">组织动态</li>
+            <li @click="goPage('relatedPolicies')">相关政策</li>
           </ul>
         </div>
         <div :class="{'active':navStatus.xinxi}" @mouseenter="godetail(6)" @mouseleave="outdetail(6)">信 息 公 开
           <ul v-show="navStatus.xinxi">
-            <li>资质与规章</li>
-            <li>年审报表</li>
-            <li>工作简报</li>
-            <li>审计报告</li>
+            <li @click="goPage('aptirules')">资质与规章</li>
+            <li @click="goPage('years')">年审报表</li>
+            <li @click="goPage('work')">工作简报</li>
+            <li @click="goPage('audit')">审计报告</li>
           </ul>
         </div>
         <div :class="{'active':navStatus.jiaru}" @mouseenter="godetail(7)" @mouseleave="outdetail(7)">加 入 我 们
           <ul v-show="navStatus.jiaru">
-            <li>伤友注册</li>
-            <li>志愿者注册</li>
-            <li>工作机会</li>
-            <li>联系我们</li>
+            <li @click="goPage('friend')">伤友注册</li>
+            <li @click="goPage('volunteer')">志愿者注册</li>
+            <li @click="goPage('opportunity')">工作机会</li>
+            <li @click="goPage('contactus')">联系我们</li>
           </ul>
         </div>
       </div>
@@ -261,7 +261,8 @@ export default {
 <style scoped>
 .wrap{
   height: 61px;
-/*  border-bottom: 1px solid black;*/
+  border-bottom: 1px solid rgb(191, 192, 193);
+  box-shadow:0px 0px 4px #000;
 }
 .logo{
   width: 146px;
@@ -378,9 +379,10 @@ export default {
   margin-left: -6px;
 }
 .content1Wrap{
-  width: 600px;
+  width: 70%;
   margin:0 auto;
   margin-top:20px;
+  text-align:center;
 }
 .footerWrap{
   width: 100%;
@@ -394,13 +396,13 @@ export default {
   line-height: 18px;
 }
 .linkList{
-  width: 98px;
+  width: 20%;
   display: inline-block;
-  margin-right:68px;
+  margin-right:38px;
   margin-bottom:25px;
 }
 .linkList img{
-  width: 98px;
+  width: 100%;
   height: 30px;
 }
 .linkList span{

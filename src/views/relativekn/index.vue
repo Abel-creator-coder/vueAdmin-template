@@ -5,7 +5,14 @@
   	</div>
     <div class="content1Wrap">
       <p class="title">相关知识</p>
-      <div class="listWrap">
+      <div class="listWrap" v-for="(item,index) in relativekn" :key="index" @click="goDetail(item)" :class="{'listWrap':true,'listactive':listactive == index}" @mouseenter="listin(index)" @mouseleave="listout(index)">
+        <img :src="item.image">
+        <div class="listContentWrap">
+          <p class="title">{{item.title}}</p>
+          <p class="content">{{item.intro}}</p>
+        </div>
+      </div>
+      <!-- <div class="listWrap">
         <img :src="people2">
         <div class="listContentWrap">
           <p class="title">每年多达72万人出现脊椎损伤</p>
@@ -39,7 +46,7 @@
           <p class="title">每年多达72万人出现脊椎损伤</p>
           <p class="content">013年12月2日 | 日内瓦 - 每年发生脊髓损伤的人有50万之多。脊髓损伤者出现过早死亡的可能性要高出二至五倍，其中低收入</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -53,16 +60,29 @@ export default {
     return {
       people2,
     	people1,
+      listactive:false,
+      relativekn:[]
     }
   },
   mounted() {
-  	
+  	this.$store.dispatch('Getrelativekn',{ pageNum: 0, pageSize: 30 }).then((data) => {
+      this.relativekn = data.list;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     
   },
   methods: {
-    
+    listin(index){
+      this.listactive = index;
+    },
+    listout(){
+      this.listactive = -1;
+    },
+    goDetail(item){
+      this.$router.push({name:'relativekn1',params:item});
+    },
   }
 }
 </script>
@@ -128,9 +148,12 @@ export default {
   width: 600px;
   margin:0 auto;
 }
+.content1Wrap .listactive{
+  background-color: #03A692;
+  color: #fff;
+}
 .content1Wrap .title{
   font-size: 18px;
-  color: #333333;
   margin-bottom:25px;
 }
 .content1Wrap .listWrap{
@@ -150,14 +173,12 @@ export default {
 }
 .content1Wrap .listContentWrap .title{
   font-size: 15px;
-  color: #333333;
   margin-bottom:20px;
   margin-left:20px;
   margin-top:20px;
 }
 .content1Wrap .listContentWrap .content{
   font-size: 13px;
-  color: #666666;
   margin-left:20px;
 }
 .checkMore{

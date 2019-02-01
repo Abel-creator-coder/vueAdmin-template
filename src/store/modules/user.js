@@ -1,4 +1,4 @@
-import { login, logout, getInfo, jigoudongtai, fazhanlicheng, lunbo, youqinglianjie, guwentuan, jizuisunshang, jigoujianjie } from '@/api/login'
+import { login, logout, getInfo, jigoudongtai, fazhanlicheng, lunbo, youqinglianjie, guwentuan, jizuisunshang, jigoujianjie, shipinjieshao, mytuandui, jiagoutu, relativekn, hope } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -126,6 +126,51 @@ const user = {
         Getjigoujianjie({ commit }) {
             return new Promise((resolve, reject) => {
                 jigoujianjie().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getshipinjieshao({ commit }) {
+            return new Promise((resolve, reject) => {
+                shipinjieshao().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getmytuandui({ commit }) {
+            return new Promise((resolve, reject) => {
+                mytuandui().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getjiagoutu({ commit }) {
+            return new Promise((resolve, reject) => {
+                jiagoutu().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getrelativekn({ commit }, param) {
+            return new Promise((resolve, reject) => {
+                relativekn(param).then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Gethope({ commit }) {
+            return new Promise((resolve, reject) => {
+                hope().then(response => {
                     resolve(response.data)
                 }).catch(error => {
                     reject(error)

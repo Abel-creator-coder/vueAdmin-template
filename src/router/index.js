@@ -57,6 +57,7 @@ export const constantRouterMap = [{
                 import ('@/views/relativekn/index')
         }, {
             path: 'relativekn1',
+            name: 'relativekn1',
             component: () =>
                 import ('@/views/relativekn1/index')
         }, {
@@ -83,6 +84,58 @@ export const constantRouterMap = [{
             path: 'jijin1',
             component: () =>
                 import ('@/views/jijin1/index')
+        }, {
+            path: 'instDynamics',
+            component: () =>
+                import ('@/views/instDynamics/index')
+        }, {
+            path: 'mediaCoverage',
+            component: () =>
+                import ('@/views/mediaCoverage/index')
+        }, {
+            path: 'newLifeStory',
+            component: () =>
+                import ('@/views/newLifeStory/index')
+        }, {
+            path: 'orgDynamics',
+            component: () =>
+                import ('@/views/orgDynamics/index')
+        }, {
+            path: 'relatedPolicies',
+            component: () =>
+                import ('@/views/relatedPolicies/index')
+        }, {
+            path: 'aptirules',
+            component: () =>
+                import ('@/views/aptirules/index')
+        }, {
+            path: 'years',
+            component: () =>
+                import ('@/views/years/index')
+        }, {
+            path: 'work',
+            component: () =>
+                import ('@/views/work/index')
+        }, {
+            path: 'audit',
+            component: () =>
+                import ('@/views/audit/index')
+        }, {
+            path: 'friend',
+            component: () =>
+                import ('@/views/friend/index')
+        }, {
+            path: 'volunteer',
+            component: () =>
+                import ('@/views/volunteer/index')
+        }, {
+            path: 'opportunity',
+            component: () =>
+                import ('@/views/opportunity/index')
+        }, {
+            path: 'contactus',
+            component: () =>
+                import ('@/views/contactus/index')
         }, ]
     },
     { path: '*', redirect: '/404', hidden: true }

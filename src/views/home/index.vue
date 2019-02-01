@@ -103,8 +103,8 @@
   		<div class="contentWrap">
   			<img :src="video" class="video">
   			<img :src="play" class="play">
-  			<p class="title">脊椎损伤者生活重建培训项目</p>
-  			<p class="content">中国脊椎损伤者约130万，每年以5至8万人高速增长，他们是社会隐形人。95%的脊椎损伤者还被困家中，预防脊椎损伤，关注脊椎损伤者。</p>
+  			<p class="title">{{shipinjieshao.conKey}}</p>
+  			<p class="content">{{shipinjieshao.conVal}}</p>
   		</div>
   	</div>
     <div style="position: fixed;right:5px;top:53%;border-radius: 3px;width: 33px;height: 68px;background-color: #E11E48;text-align: center;cursor:pointer;z-index: 1000;" @click="golove">
@@ -175,6 +175,7 @@ export default {
       },
       jigoudongtai:[],
       lunbo:[],
+      shipinjieshao:{}
     }
   },
   components: {
@@ -205,7 +206,11 @@ export default {
       this.lunbo = data.list;
     }).catch(() => {
     })
-
+    this.$store.dispatch('Getshipinjieshao').then((data) => {
+      // console.log(data);
+      this.shipinjieshao = data;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     

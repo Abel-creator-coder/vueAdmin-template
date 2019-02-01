@@ -63,7 +63,7 @@ export function guwentuan() {
 }
 export function jizuisunshang() {
     return request({
-        url: '/about/injury/page',
+        url: '/sys/config/about_spinal_info',
         method: 'get',
         params: { pageNum: 0, pageSize: 30 }
     })
@@ -71,6 +71,41 @@ export function jizuisunshang() {
 export function jigoujianjie() {
     return request({
         url: '/sys/config/about_org_info',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function shipinjieshao() {
+    return request({
+        url: '/sys/config/main_project_info',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function mytuandui() {
+    return request({
+        url: '/about/team/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function jiagoutu() {
+    return request({
+        url: '/sys/config/about_team_image',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function relativekn(param) {
+    return request({
+        url: '/about/injury/page',
+        method: 'get',
+        params: param
+    })
+}
+export function hope() {
+    return request({
+        url: '/pro/project/hope',
         method: 'get',
         params: { pageNum: 0, pageSize: 30 }
     })
