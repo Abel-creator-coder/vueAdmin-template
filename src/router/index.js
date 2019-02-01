@@ -95,7 +95,39 @@ export const constantRouterMap = [{
             path: 'relatedPolicies',
             component: () =>
                 import ('@/views/relatedPolicies/index')
-        },  ]
+        }, {
+            path: 'aptirules',
+            component: () =>
+                import ('@/views/aptirules/index')
+        }, {
+            path: 'years',
+            component: () =>
+                import ('@/views/years/index')
+        }, {
+            path: 'work',
+            component: () =>
+                import ('@/views/work/index')
+        }, {
+            path: 'audit',
+            component: () =>
+                import ('@/views/audit/index')
+        }, {
+            path: 'friend',
+            component: () =>
+                import ('@/views/friend/index')
+        }, {
+            path: 'volunteer',
+            component: () =>
+                import ('@/views/volunteer/index')
+        }, {
+            path: 'opportunity',
+            component: () =>
+                import ('@/views/opportunity/index')
+        }, {
+            path: 'contactus',
+            component: () =>
+                import ('@/views/contactus/index')
+        }, ]
     },
     { path: '*', redirect: '/404', hidden: true }
 ]

@@ -36,18 +36,18 @@
         </div>
         <div :class="{'active':navStatus.xinxi}" @mouseenter="godetail(6)" @mouseleave="outdetail(6)">信 息 公 开
           <ul v-show="navStatus.xinxi">
-            <li>资质与规章</li>
-            <li>年审报表</li>
-            <li>工作简报</li>
-            <li>审计报告</li>
+            <li @click="goPage('aptirules')">资质与规章</li>
+            <li @click="goPage('years')">年审报表</li>
+            <li @click="goPage('work')">工作简报</li>
+            <li @click="goPage('audit')">审计报告</li>
           </ul>
         </div>
         <div :class="{'active':navStatus.jiaru}" @mouseenter="godetail(7)" @mouseleave="outdetail(7)">加 入 我 们
           <ul v-show="navStatus.jiaru">
-            <li>伤友注册</li>
-            <li>志愿者注册</li>
-            <li>工作机会</li>
-            <li>联系我们</li>
+            <li @click="goPage('friend')">伤友注册</li>
+            <li @click="goPage('volunteer')">志愿者注册</li>
+            <li @click="goPage('opportunity')">工作机会</li>
+            <li @click="goPage('contactus')">联系我们</li>
           </ul>
         </div>
       </div>

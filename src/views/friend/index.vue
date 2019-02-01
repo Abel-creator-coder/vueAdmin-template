@@ -3,20 +3,21 @@
   	<div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
-  		  <span @click="goToItem('aptirules')">资质与规章</span>
-  			<span @click="goToItem('years')">年审报表</span>
-  			<span class="tabsel" >工作简报</span>
-  			<span @click="goToItem('audit')">审计报告</span>
+  			<span @click="goToItem('instDynamics')">机构动态</span>
+  			<span class="tabsel">媒体报道</span>
+  			<span @click="goToItem('newLifeStory')">新生命故事</span>
+  			<span @click="goToItem('orgDynamics')">组织动态</span>
+				<span @click="goToItem('relatedPolicies')">相关政策</span>
   		</div>
   	</div>
   	<div class="brumbWrap">
-  		<span>您的位置：信息公开>工作简报</span>
+  		<span>您的位置：社会影响>媒体报道</span>
   	</div>
   	<div class="content1Wrap" >
-      <div v-for="work, key in works" :class="{'listWrap':true,'listactive':key==listactiveFlag}" @mouseenter="listin(key)" @mouseleave="listout(key)">
-        <a :href="work.url" download="canvas"><div class="listContentWrap">
-          <p class="title">{{ work.title }}</p>
-        </div></a>
+      <div v-for="media, key in medias"  @click="goDetail(media.id)" :class="{'listWrap':true,'listactive':key==listactiveFlag}" @mouseenter="listin(key)" @mouseleave="listout(key)">
+        <div class="listContentWrap">
+          <p class="title">{{ media.title }}</p>
+        </div>
 				<hr class="content1Hr">
       </div>
     </div>
@@ -25,7 +26,7 @@
 
 <script>
 import people from '@/assets/people.png'
-import {getWorks} from '@/api/information.js'
+import {getMediaList} from '@/api/effort.js'
 
 export default {
   data() {
@@ -33,7 +34,7 @@ export default {
 			people,
       pageNum:1,
       pageSize:5,
-      works:[],
+      medias:[],
       listactiveFlag:-1
     }
   },
@@ -45,10 +46,11 @@ export default {
   },
   methods: {
 		init(){
-      getWorks(this.pageNum,this.pageSize).then(reponse => {
+      getMediaList(this.pageNum,this.pageSize).then(reponse => {
         reponse.data.list.forEach(item => {
-          this.works.push(item);
+          this.medias.push(item);
         });
+        console.log(this.institues);
       }).catch(error => {
         console.log(error);
       });
@@ -94,7 +96,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(4){
+.tabWrap span:nth-child(5){
 	margin-right:0px;
 }
 .tabWrap .tabsel{
