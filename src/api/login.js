@@ -25,3 +25,53 @@ export function logout() {
         method: 'post'
     })
 }
+
+export function jigoudongtai(param) {
+    return request({
+        url: '/main/org/page',
+        method: 'get',
+        params: param
+    })
+}
+export function fazhanlicheng() {
+    return request({
+        url: '/main/develop/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 20 }
+    })
+}
+export function lunbo() {
+    return request({
+        url: '/main/banner/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 20 }
+    })
+}
+export function youqinglianjie() {
+    return request({
+        url: '/main/link/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 20 }
+    })
+}
+export function guwentuan() {
+    return request({
+        url: '/about/adviser/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function jizuisunshang() {
+    return request({
+        url: '/about/injury/page',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}
+export function jigoujianjie() {
+    return request({
+        url: '/sys/config/about_org_info',
+        method: 'get',
+        params: { pageNum: 0, pageSize: 30 }
+    })
+}

@@ -3,9 +3,11 @@
     <div class="bg2"></div>
     <div class="tabWrap">
       <div style="display: inline-block;background-color: #fff;">
-        <span>金种子赋能</span>
-        <span  class="tabsel">希望+</span>
-        <span>特色项目</span>
+        <!-- <span>金种子赋能</span> -->
+        <router-link to="/gongyi" class="list">金种子赋能</router-link>
+        <span  class="list tabsel">希望+</span>
+        <router-link to="/specialpro" class="list">特色项目</router-link>
+        <!-- <span>特色项目</span> -->
       </div>
     </div>
   	<div class="brumbWrap">
@@ -117,7 +119,7 @@ export default {
 	position: relative;
 	top:-20px;
 }
-.tabWrap span{
+.tabWrap .list{
 	display: inline-block;
 	width: 113px;
 	height: 51px;
@@ -128,7 +130,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(3){
+.tabWrap .list:nth-child(3){
 	margin-right:0px;
 }
 .tabWrap .tabsel{

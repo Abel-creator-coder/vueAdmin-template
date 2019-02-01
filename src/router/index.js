@@ -75,6 +75,14 @@ export const constantRouterMap = [{
             path: 'funeng',
             component: () =>
                 import ('@/views/funeng/index')
+        }, {
+            path: 'love',
+            component: () =>
+                import ('@/views/love/index')
+        }, {
+            path: 'jijin1',
+            component: () =>
+                import ('@/views/jijin1/index')
         }, ]
     },
     { path: '*', redirect: '/404', hidden: true }

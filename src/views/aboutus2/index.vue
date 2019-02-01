@@ -3,17 +3,21 @@
   	<div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
-  			<span>机构简介</span>
-  			<span>爱心顾问团</span>
-  			<span class="tabsel">脊椎损伤</span>
-  			<span>组织架构</span>
+        <router-link to="/aboutus1" class="list">机构简介</router-link>
+        <router-link to="/aboutus" class="list">爱心顾问团</router-link>
+  			<span class="list tabsel">脊椎损伤</span>
+        <router-link to="/jiagou" class="list">组织架构</router-link>
   		</div>
   	</div>
   	<div class="brumbWrap">
   		<span>您的位置：关于我们 > 脊椎损伤</span>
   	</div>
   	<p style="font-size:18px;color:#333333;width:600px;margin:0 auto;text-align:left;">脊髓损伤</p>
-    <div class="contentWrap">
+    <div class="contentWrap" v-for="(item,index) in jizuisunshang" :key="index">
+      <p class="title"> {{item.title}} </p>
+      <p class="content" v-html="item.content"></p>
+    </div>
+    <!-- <div class="contentWrap">
       <p class="title">「脊髓损伤」</p>
       <p class="content">（英字：SCI，Spinal cord injury）是指由创伤（如交通事故）、疾病或退化（如癌症）造成的脊髓损坏。约占全球人脊髓损伤的高发期为青年期（20至29岁）和老年期（女性60岁以上，男性70岁以上）；男性与女性的比例为2:1 •增长：全世界每年新增25万至50万脊髓损伤； •原因：大多数脊髓损伤是由道路交通事故、工伤意</p>
     </div>
@@ -28,7 +32,7 @@
     <div class="contentWrap">
       <p class="title">脊髓损伤的潜能：</p>
       <p class="content">脊髓损伤伤友大部分都是后天受伤致残，大多数受过良好的教育、大多数具有宝贵的社会经历、大多数是家庭经济的主要负担者、大多数是单位</p>
-    </div>
+    </div> -->
     <div style="width: 600px;margin:0 auto;margin-top:16px;margin-bottom:16px;">
       <img :src="people1" style="width: 597px;height: 370px;">
     </div>
@@ -65,10 +69,14 @@ export default {
     	people1,
       checkMore,
       listactive:false,
+      jizuisunshang:[]
     }
   },
   mounted() {
-  	
+  	this.$store.dispatch('Getjizuisunshang').then((data) => {
+      this.jizuisunshang = data.list;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     
@@ -104,7 +112,7 @@ export default {
 	position: relative;
 	top:-20px;
 }
-.tabWrap span{
+.tabWrap .list{
 	display: inline-block;
 	width: 113px;
 	height: 51px;
@@ -115,7 +123,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(4){
+.tabWrap .list:nth-child(4){
 	margin-right:0px;
 }
 .tabWrap .tabsel{

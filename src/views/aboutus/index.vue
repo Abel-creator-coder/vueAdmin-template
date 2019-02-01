@@ -3,19 +3,27 @@
   	<div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
-  			<span>机构简介</span>
-  			<span class="tabsel">爱心顾问团</span>
-  			<span>脊椎损伤</span>
-  			<span>组织架构</span>
+  			<!-- <span>机构简介</span> -->
+        <router-link to="/aboutus1" class="list">机构简介</router-link>
+  			<span class="list tabsel">爱心顾问团</span>
+        <router-link to="/aboutus2" class="list">脊椎损伤</router-link>
+        <router-link to="/jiagou" class="list">组织架构</router-link>
+  			<!-- <span>脊椎损伤</span>
+  			<span>组织架构</span> -->
   		</div>
   	</div>
   	<div class="brumbWrap">
-  		<span>您的位置：关于我们>机构简介</span>
+  		<span>您的位置：关于我们>爱心顾问团</span>
   	</div>
   	<div class="content1Wrap">
   		<p class="title">爱心顾问团</p>
   		<div class="imgWrap">
-  			<div class="imgWrap1">
+  			<div class="imgWrap1" v-for="(item,index) in guwentuan" :key="index">
+  				<img :src="item.avatar">
+  				<span class="name">{{item.name}}</span>
+  				<p class="line"></p>
+  			</div>
+<!--   			<div class="imgWrap1">
   				<img :src="people">
   				<span class="name">王建国</span>
   				<p class="line"></p>
@@ -39,18 +47,18 @@
   				<img :src="people">
   				<span class="name">王建国</span>
   				<p class="line"></p>
-  			</div>
-  			<div class="imgWrap1">
-  				<img :src="people">
-  				<span class="name">王建国</span>
-  				<p class="line"></p>
-  			</div>
+  			</div> -->
   		</div>
   	</div>
   	<div class="content1Wrap">
   		<p class="title">爱心陪伴顾问</p>
   		<div class="imgWrap">
-  			<div class="imgWrap1">
+        <div class="imgWrap1" v-for="(item,index) in guwentuan" :key="index">
+          <img :src="item.avatar">
+          <span class="name">{{item.name}}</span>
+          <p class="line"></p>
+        </div>
+  			<!-- <div class="imgWrap1">
   				<img :src="people">
   				<span class="name">王建国</span>
   				<p class="line"></p>
@@ -79,7 +87,7 @@
   				<img :src="people">
   				<span class="name">王建国</span>
   				<p class="line"></p>
-  			</div>
+  			</div> -->
   		</div>
   	</div>
   </div>
@@ -92,10 +100,14 @@ export default {
   data() {
     return {
     	people,
+      guwentuan:[]
     }
   },
   mounted() {
-  	
+  	this.$store.dispatch('Getguwentuan').then((data) => {
+      this.guwentuan = data.list;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     
@@ -120,7 +132,7 @@ export default {
 	position: relative;
 	top:-20px;
 }
-.tabWrap span{
+.tabWrap .list{
 	display: inline-block;
 	width: 113px;
 	height: 51px;
@@ -131,7 +143,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(4){
+.tabWrap .list:nth-child(4){
 	margin-right:0px;
 }
 .tabWrap .tabsel{

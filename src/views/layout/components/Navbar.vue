@@ -13,7 +13,7 @@
         </div>
         <div :class="{'active':navStatus.jijin}" @mouseenter="godetail(3)" @mouseleave="outdetail(3)">专 项 基 金
           <ul v-show="navStatus.jijin">
-            <li>无障碍专项</li>
+            <li @click="goPage('jijin1')">无障碍专项</li>
             <li>基金</li>
           </ul>
         </div>
@@ -57,15 +57,19 @@
         </div>
         <div class="imgWrap" :class="{'markactive':mark.tel}" @mouseover="showmark(1)" @mouseleave="hidemark(1)">
           <img class="tel" :src="telephone">
+          <img :src="tel1" class="tel1" v-show="mark.tel">
         </div>
         <div class="imgWrap" @mouseover="showmark(2)" @mouseleave="hidemark(2)">
           <img class="weixin" :src="weichat">
+          <img :src="weixin1" class="weixin1" v-show="mark.weixin">
         </div>
         <div class="imgWrap" @mouseover="showmark(3)" @mouseleave="hidemark(3)">
           <img class="qq" :src="qq">
+          <img :src="qq1" class="qq1" v-show="mark.qq">
         </div>
         <div class="imgWrap" @mouseover="showmark(4)" @mouseleave="hidemark(4)">
           <img class="weibo" :src="weibo">
+          <img :src="weibo1" class="weibo1" v-show="mark.weibo">
         </div>
       </div>
     </div>
@@ -73,7 +77,11 @@
     <div class="content1Wrap">
       <p style="font-size: 24px;color:#666666;margin-bottom:20px;text-align:center;">友情链接</p>
       <div style="font-size: 0;">
-        <div class="linkList">
+        <a class="linkList" :href="item.url" v-for="(item,index) in youqinglianjie" :key="index">
+          <img :src="item.image">
+          <span>{{item.title}}</span>
+        </a>
+        <!-- <div class="linkList">
           <img :src="link">
           <span>中国残疾人联合会</span>
         </div>
@@ -100,11 +108,7 @@
         <div class="linkList">
           <img :src="link">
           <span>中国残疾人联合会</span>
-        </div>
-        <div class="linkList">
-          <img :src="link">
-          <span>中国残疾人联合会</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="footerWrap">
@@ -127,6 +131,10 @@ import weixinsel from '@/assets/weixinsel.png'
 import weibo from '@/assets/weibo.png'
 import weibosel from '@/assets/weibosel.png'
 import link from '@/assets/link.png'
+import tel1 from '@/assets/tel1.png'
+import weixin1 from '@/assets/weixin1.png'
+import qq1 from '@/assets/qq1.png'
+import weibo1 from '@/assets/weibo1.png'
 
 export default {
   data(){
@@ -138,6 +146,10 @@ export default {
       telephone:tel,
       weichat:weixin,
       qq:qq,
+      tel1,
+      weixin1,
+      qq1,
+      weibo1,
       navStatus:{
         home:true,
         gongyi:false,
@@ -153,12 +165,19 @@ export default {
         qq:false,
         weixin:false,
         search:false,
-      }
+      },
+      youqinglianjie:[]
     }
   },
   // components:{
   //   home:home
   // },
+  mounted(){
+    this.$store.dispatch('Getyouqinglianjie').then((data) => {
+      this.youqinglianjie = data.list;
+    }).catch(() => {
+    })
+  },
   methods:{
     godetail(type){
       if(type == 1) {
@@ -198,29 +217,37 @@ export default {
     showmark(type){
       if(type == 1){
         this.telephone = telsel;
+        this.mark.tel = true;
       }
       if(type == 2){
         this.weichat = weixinsel;
+        this.mark.weixin = true;
       }
       if(type == 3){
         this.qq = qqsel;
+        this.mark.qq = true;
       }
       if(type == 4){
         this.weibo = weibosel;
+        this.mark.weibo = true;
       }
     },
     hidemark(type){
       if(type == 1){
         this.telephone = tel;
+        this.mark.tel = false;
       }
       if(type == 2){
         this.weichat = weixin;
+        this.mark.weixin = false;
       }
       if(type == 3){
         this.qq = qq;
+        this.mark.qq = false;
       }
       if(type == 4){
         this.weibo = weibo;
+        this.mark.weibo = false;
       }
     },
     goPage(page){
@@ -309,6 +336,7 @@ export default {
   text-align: center;
   line-height: 80px;
   border-left: 1px solid #B2B2B2;
+  position: relative;
 }
 .imgWrap .search{
   width: 17px;
@@ -381,6 +409,38 @@ export default {
 }
 .linkList:nth-child(4n){
   margin-right:0;
+}
+.tel1{
+  width: 196px;
+  height: 51px;
+  position: absolute;
+  bottom: -51px;
+  left: -64px;
+  z-index: 1000;
+}
+.weixin1{
+  width: 137px;
+  height: 137px;
+  position: absolute;
+  bottom: -137px;
+  left: -38px;
+  z-index: 1000;
+}
+.qq1{
+  width: 196px;
+  height: 51px;
+  position: absolute;
+  bottom: -51px;
+  left: -70px;
+  z-index: 1000;
+}
+.weibo1{
+  width: 141px;
+  height: 136px;
+  position: absolute;
+  bottom: -136px;
+  left: -70px;
+  z-index: 1000;
 }
 </style>
 

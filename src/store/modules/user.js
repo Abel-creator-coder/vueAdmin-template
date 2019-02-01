@@ -1,4 +1,4 @@
-import { login, logout, getInfo } from '@/api/login'
+import { login, logout, getInfo, jigoudongtai, fazhanlicheng, lunbo, youqinglianjie, guwentuan, jizuisunshang, jigoujianjie } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -69,29 +69,69 @@ const user = {
                 })
             })
         },
-
-        // 登出
-        LogOut({ commit, state }) {
+        Getjigoudongtai({ commit }, param) {
             return new Promise((resolve, reject) => {
-                logout(state.token).then(() => {
-                    commit('SET_TOKEN', '')
-                    commit('SET_ROLES', [])
-                    removeToken()
-                    resolve()
+                jigoudongtai(param).then(response => {
+                    resolve(response.data)
                 }).catch(error => {
                     reject(error)
                 })
             })
         },
-
-        // 前端 登出
-        FedLogOut({ commit }) {
-            return new Promise(resolve => {
-                commit('SET_TOKEN', '')
-                removeToken()
-                resolve()
+        Getfazhanlicheng({ commit }) {
+            return new Promise((resolve, reject) => {
+                fazhanlicheng().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
             })
-        }
+        },
+        Getlunbo({ commit }) {
+            return new Promise((resolve, reject) => {
+                lunbo().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getyouqinglianjie({ commit }) {
+            return new Promise((resolve, reject) => {
+                youqinglianjie().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getguwentuan({ commit }) {
+            return new Promise((resolve, reject) => {
+                guwentuan().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getjizuisunshang({ commit }) {
+            return new Promise((resolve, reject) => {
+                jizuisunshang().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
+        Getjigoujianjie({ commit }) {
+            return new Promise((resolve, reject) => {
+                jigoujianjie().then(response => {
+                    resolve(response.data)
+                }).catch(error => {
+                    reject(error)
+                })
+            })
+        },
     }
 }
 

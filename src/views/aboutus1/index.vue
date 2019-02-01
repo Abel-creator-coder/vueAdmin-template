@@ -3,10 +3,14 @@
   	<div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
-  			<span class="tabsel">机构简介</span>
-  			<span>爱心顾问团</span>
+  			<span class="list tabsel">机构简介</span>
+        <router-link to="/aboutus" class="list">爱心顾问团</router-link>
+        <router-link to="/aboutus2" class="list">脊椎损伤</router-link>
+        <router-link to="/jiagou" class="list">组织架构</router-link>
+
+  			<!-- <span>爱心顾问团</span>
   			<span>脊椎损伤</span>
-  			<span>组织架构</span>
+  			<span>组织架构</span> -->
   		</div>
   	</div>
   	<div class="brumbWrap">
@@ -14,6 +18,10 @@
   	</div>
   	<p style="font-size:18px;color:#333333;width:600px;margin:0 auto;text-align:left;">机构简介</p>
     <div class="contentWrap">
+      <p class="title">{{jigoujianjie.conKey}}</p>
+      <p class="content" v-html="jigoujianjie.conVal"></p>
+    </div>
+    <!-- <div class="contentWrap">
       <p class="title">起源：</p>
       <p class="content">2014年5月我们成立了北京第一家由脊髓损伤伤友自我管理的脊髓损伤者希望之家，开展了以伤友服务伤友（同辈服务）为核心的脊髓损伤</p>
     </div>
@@ -28,7 +36,7 @@
     <div class="contentWrap">
       <p class="title">目标：</p>
       <p class="content">以一种态度积极、模式创新的方式来推动社会公益事业。通过标准化建设，形成一整套脊髓损伤伤友自救体系和救助模式，不仅为脊髓损伤伤友 </p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -39,10 +47,15 @@ export default {
   data() {
     return {
     	people,
+      jigoujianjie:{}
     }
   },
   mounted() {
-  	
+  	this.$store.dispatch('Getjigoujianjie').then((data) => {
+      // console.log(data)
+      this.jigoujianjie = data;
+    }).catch(() => {
+    })
   },
   beforeDestroy() {
     
@@ -67,7 +80,7 @@ export default {
 	position: relative;
 	top:-20px;
 }
-.tabWrap span{
+.tabWrap .list{
 	display: inline-block;
 	width: 113px;
 	height: 51px;
@@ -78,7 +91,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(4){
+.tabWrap .list:nth-child(4){
 	margin-right:0px;
 }
 .tabWrap .tabsel{

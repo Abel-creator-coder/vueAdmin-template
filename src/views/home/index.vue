@@ -2,27 +2,32 @@
   <div>
   	<div class="swiperWrap">
   		<swiper :options="swiperOption">
-	      <swiper-slide><img :src="test1"></swiper-slide>
-	      <swiper-slide><img :src="test2"></swiper-slide>
+	      <!-- <swiper-slide><img :src="lun1"></swiper-slide>
+	      <swiper-slide><img :src="lun2"></swiper-slide>
+	      <swiper-slide><img :src="lun3"></swiper-slide>
+	      <swiper-slide><img :src="lun4"></swiper-slide> -->
+	      <!-- <swiper-slide><img :src="test1"></swiper-slide> -->
+        <!-- <swiper-slide><img :src="test2"></swiper-slide> -->
+	      <swiper-slide v-for="(item,index) in lunbo" :key="index"><img :src="item.image"></swiper-slide>
 	    </swiper>
 	    <img :src="arrowLeft" class="arrowLeft" @mouseover="arrowLeftIn" @mouseleave="arrowLeftOut">
 	    <img :src="arrowRight" class="arrowRight" @mouseover="arrowRightIn" @mouseleave="arrowRightOut">
   	</div>
   	<div class="content2Wrap">
   		<div class="imgWrap">
-  			<div>
+  			<div :class="{'active2':content2Wrap.bg1}" @mouseenter="content2Wrapshow(1)" @mouseleave="content2Wraphide(1)">
   				<p class="title">脊髓损伤者</p>
   				<p class="content">生活重建训练营</p>
   			</div>
-  			<div>
+  			<div :class="{'active3':content2Wrap.bg2}" @mouseenter="content2Wrapshow(2)" @mouseleave="content2Wraphide(2)">
   				<p class="title">脊髓损伤者</p>
   				<p class="content">生活重建训练营</p>
   			</div>
-  			<div>
+  			<div :class="{'active2':content2Wrap.bg3}" @mouseenter="content2Wrapshow(3)" @mouseleave="content2Wraphide(3)">
   				<p class="title">脊髓损伤者</p>
   				<p class="content">生活重建训练营</p>
   			</div>
-  			<div>
+  			<div :class="{'active3':content2Wrap.bg4}" @mouseenter="content2Wrapshow(4)" @mouseleave="content2Wraphide(4)">
   				<p class="title">脊髓损伤者</p>
   				<p class="content">生活重建训练营</p>
   			</div>
@@ -31,15 +36,11 @@
   	<div class="content1Wrap">
   		<div style="width: 600px;margin:0 auto;padding-top: 28px;">
   			<ul class="left">
-	  			<li :class="{'leftList':true,'listActive':listactive == index}" v-for="(item,index) in list" @mouseover="listchange(index)">
-	  				<span class="time">2016</br>7-20</span>
-	  				<span class="listText" >获《新浪公益》年度中国致敬奖</span>
+	  			<li :class="{'leftList':true,'listActive':listactive == index}" v-for="(item,index) in fazhanlicheng" @mouseover="listchange(index)">
+	  				<span class="time">{{item.time1}}<br/>{{item.time2}}</span>
+	  				<span class="listText" >{{item.title}}</span>
 	  			</li>
-	  			<li class="leftList">
-	  				<span class="time">2016</br>7-20</span>
-	  				<span class="listText">获《新浪公益》年度中国致敬奖</span>
-	  			</li>
-	  			<li class="leftList">
+	  			<!-- <li class="leftList">
 	  				<span class="time">2016</br>7-20</span>
 	  				<span class="listText">获《新浪公益》年度中国致敬奖</span>
 	  			</li>
@@ -55,6 +56,10 @@
 	  				<span class="time">2016</br>7-20</span>
 	  				<span class="listText">获《新浪公益》年度中国致敬奖</span>
 	  			</li>
+	  			<li class="leftList">
+	  				<span class="time">2016</br>7-20</span>
+	  				<span class="listText">获《新浪公益》年度中国致敬奖</span>
+	  			</li> -->
   			</ul>
   			<span style="display: inline-block;font-size: 24px;color:#fff;vertical-align: middle;margin-left:44px;width: 10px;">一起见证我们的发展</span>
   		</div>
@@ -62,7 +67,16 @@
   	<div class="dynamic">
   		<p class="title">机构动态</p>
   		<div class="contentWrap">
-  			<div class="imgWrap">
+  			<div class="imgWrap" v-for="item in jigoudongtai">
+  				<img class="img1" :src="item.image">
+  				<p class="time">{{item.createdAt}}</p>
+  				<p class="content">{{item.title}}</p>
+  				<div class="tipWrap">
+  					<span>更多</span>
+  					<img :src="left">
+  				</div>
+  			</div>
+  			<!-- <div class="imgWrap">
   				<img class="img1" :src="test3">
   				<p class="time">2018.10.17</p>
   				<p class="content">“金钟子”培训计划等你来报名！</p>
@@ -79,16 +93,7 @@
   					<span>更多</span>
   					<img :src="left">
   				</div>
-  			</div>
-  			<div class="imgWrap">
-  				<img class="img1" :src="test3">
-  				<p class="time">2018.10.17</p>
-  				<p class="content">“金钟子”培训计划等你来报名！</p>
-  				<div class="tipWrap">
-  					<span>更多</span>
-  					<img :src="left">
-  				</div>
-  			</div>
+  			</div> -->
   		</div>
   		<div class="checkMoreWrap">
   			<img :src="checkMore">
@@ -102,6 +107,10 @@
   			<p class="content">中国脊椎损伤者约130万，每年以5至8万人高速增长，他们是社会隐形人。95%的脊椎损伤者还被困家中，预防脊椎损伤，关注脊椎损伤者。</p>
   		</div>
   	</div>
+    <div style="position: fixed;right:5px;top:53%;border-radius: 3px;width: 33px;height: 68px;background-color: #E11E48;text-align: center;cursor:pointer;z-index: 1000;" @click="golove">
+      <span style="font-size: 12px;color:#fff;display: inline-block;width: 10px;margin-top:5px;">爱的公示</span>
+
+    </div>
   </div>
 </template>
 
@@ -111,6 +120,10 @@ import { swiper, swiperSlide } from 'vue-awesome-swiper';
 import test1 from '@/assets/test1.png'
 import test2 from '@/assets/test2.png'
 import test3 from '@/assets/test3.png'
+import lun1 from '@/assets/lun1.png'
+import lun2 from '@/assets/lun2.png'
+import lun3 from '@/assets/lun3.png'
+import lun4 from '@/assets/lun4.png'
 import video from '@/assets/video.png'
 import play from '@/assets/play.png'
 import checkMore from '@/assets/checkMore.png'
@@ -127,6 +140,10 @@ export default {
     	test1,
     	test2,
     	test3,
+    	lun1,
+    	lun2,
+    	lun3,
+    	lun4,
     	video,
     	play,
     	checkMore,
@@ -135,35 +152,29 @@ export default {
     	arrowLeft:'',
     	arrowRight:'',
     	listactive:0,
-    	list:[
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	'获《新浪公益》年度中国致敬奖',
-    	],
+    	content2Wrap:{
+    		bg1:false,
+    		bg2:false,
+    		bg3:false,
+    		bg4:false,
+    	},
+    	fazhanlicheng:[],
       swiperOption: {//swiper3
       	loop: true,
-	    autoplay: {
-	      	speed: 2000,
-		    delay: 3000,
-		    stopOnLastSlide: false, 
-		    disableOnInteraction: true,
-		    reverseDirection: false,
-	  	},
-	  	navigation: {
-		    nextEl: '.arrowRight', //前进按钮的css选择器或HTML元素。
-		    prevEl: '.arrowLeft', //后退按钮的css选择器或HTML元素。
-		},
+  	    autoplay: {
+  	      	speed: 2000,
+  		    delay: 3000,
+  		    stopOnLastSlide: false, 
+  		    disableOnInteraction: true,
+  		    reverseDirection: false,
+  	  	},
+  	  	navigation: {
+  		    nextEl: '.arrowRight', //前进按钮的css选择器或HTML元素。
+  		    prevEl: '.arrowLeft', //后退按钮的css选择器或HTML元素。
+  		  },
       },
+      jigoudongtai:[],
+      lunbo:[],
     }
   },
   components: {
@@ -178,6 +189,23 @@ export default {
   mounted() {
   	this.arrowLeft = arrowLeftnoSel;
   	this.arrowRight = arrowRightnoSel;
+    this.$store.dispatch('Getjigoudongtai', {pageNum:0,pageSize:3}).then((data) => {
+      this.jigoudongtai = data.list.map((item) => {
+        return {...item,createdAt:item.createdAt.slice(0,10)}
+      });
+    }).catch(() => {
+    })
+    this.$store.dispatch('Getfazhanlicheng').then((data) => {
+      this.fazhanlicheng = data.list.map((item) => {
+        return {...item,time1:item.createdAt.slice(0,4),time2:item.createdAt.slice(9,14),}
+      });
+    }).catch(() => {
+    })
+    this.$store.dispatch('Getlunbo').then((data) => {
+      this.lunbo = data.list;
+    }).catch(() => {
+    })
+
   },
   beforeDestroy() {
     
@@ -197,6 +225,37 @@ export default {
     },
     listchange(index){
     	this.listactive = index;
+    },
+    content2Wrapshow(index){
+    	if(index == 1){
+    		this.content2Wrap.bg1 = true;
+    	}
+    	if(index == 2){
+    		this.content2Wrap.bg2 = true;
+    	}
+    	if(index == 3){
+    		this.content2Wrap.bg3 = true;
+    	}
+    	if(index == 4){
+    		this.content2Wrap.bg4 = true;
+    	}
+    },
+    content2Wraphide(index){
+    	if(index == 1){
+    		this.content2Wrap.bg1 = false;
+    	}
+    	if(index == 2){
+    		this.content2Wrap.bg2 = false;
+    	}
+    	if(index == 3){
+    		this.content2Wrap.bg3 = false;
+    	}
+    	if(index == 4){
+    		this.content2Wrap.bg4 = false;
+    	}
+    },
+    golove(){
+      this.$router.push('love');
     }
   }
 }
@@ -389,6 +448,12 @@ export default {
 	position: relative;
 	background:url('../../assets/img5.png') no-repeat center center;
 	background-size: cover;
+}
+.content2Wrap .active2{
+	background-color: rgb(3,166,146,1);
+}
+.content2Wrap .active3{
+	background-color: rgb(225,30,72,1);
 }
 .content2Wrap .imgWrap{
 	position:absolute;

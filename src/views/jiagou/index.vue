@@ -3,10 +3,10 @@
   	<div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
-  			<span>机构简介</span>
-  			<span>爱心顾问团</span>
-  			<span>脊椎损伤</span>
-  			<span class="tabsel">组织架构</span>
+  			<router-link to="/aboutus1" class="list">机构简介</router-link>
+        <router-link to="/aboutus" class="list">爱心顾问团</router-link>
+        <router-link to="/aboutus2" class="list">脊椎损伤</router-link>
+  			<span class="list tabsel">组织架构</span>
   		</div>
   	</div>
   	<div class="brumbWrap">
@@ -131,7 +131,7 @@ export default {
 	position: relative;
 	top:-20px;
 }
-.tabWrap span{
+.tabWrap .list{
 	display: inline-block;
 	width: 113px;
 	height: 51px;
@@ -142,7 +142,7 @@ export default {
 	line-height: 51px;
 	margin-right:1px;
 }
-.tabWrap span:nth-child(4){
+.tabWrap .list:nth-child(4){
 	margin-right:0px;
 }
 .tabWrap .tabsel{
