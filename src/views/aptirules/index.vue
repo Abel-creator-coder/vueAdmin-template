@@ -102,10 +102,11 @@ export default {
 }
 .tabWrap{
 	font-size: 0;
-	width: 600px;
+	width: 70%;
 	margin: 0 auto;
 	position: relative;
 	top:-20px;
+	text-align:center;
 }
 .tabWrap span{
 	display: inline-block;
@@ -125,7 +126,7 @@ export default {
 	background-color: #03A692;
 }
 .brumbWrap{
-	width: 600px;
+	width: 70%;
 	margin: 0 auto;
 	margin-top:5px;
 	margin-bottom:25px;
@@ -135,7 +136,7 @@ export default {
 	color: #666666;
 }
 .contentWrap{
-  width: 600px;
+  width: 70%;
   margin: 0 auto;
   margin-bottom:20px;
   margin-top:20px;
@@ -151,7 +152,7 @@ export default {
   line-height: 26px;
 }
 .content1Wrap{
-  width: 600px;
+  width: 70%;
   margin:0 auto;
   overflow: hidden;
 }
@@ -210,7 +211,7 @@ export default {
 	margin:0;
 }
 .dynamic .checkMoreWrap{
-	width: 608px;
+	width: 70%;
 	margin: 0 auto;
 	height: 34px;
 	overflow: hidden;
@@ -233,7 +234,7 @@ export default {
 	margin-bottom: 15px;
 }
 .dynamic .contentWrap{
-	width: 608px;
+	width: 70%;
 	height: 288px;
 	margin: 0 auto;
 	margin-bottom:20px;

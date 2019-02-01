@@ -234,7 +234,8 @@ export default {
 <style scoped>
 .wrap{
   height: 61px;
-/*  border-bottom: 1px solid black;*/
+  border-bottom: 1px solid rgb(191, 192, 193);
+  box-shadow:0px 0px 4px #000;
 }
 .logo{
   width: 146px;
@@ -350,9 +351,10 @@ export default {
   margin-left: -6px;
 }
 .content1Wrap{
-  width: 600px;
+  width: 70%;
   margin:0 auto;
   margin-top:20px;
+  text-align:center;
 }
 .footerWrap{
   width: 100%;
@@ -366,13 +368,13 @@ export default {
   line-height: 18px;
 }
 .linkList{
-  width: 98px;
+  width: 20%;
   display: inline-block;
-  margin-right:68px;
+  margin-right:38px;
   margin-bottom:25px;
 }
 .linkList img{
-  width: 98px;
+  width: 100%;
   height: 30px;
 }
 .linkList span{

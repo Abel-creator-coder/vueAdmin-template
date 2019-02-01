@@ -1,6 +1,6 @@
 <template>
   <div>
-  	<div class="bg2"></div>
+  	<!-- <div class="bg2"></div>
   	<div class="tabWrap">
   		<div style="display: inline-block;background-color: #fff;">
   			<span @click="goToItem('instDynamics')">机构动态</span>
@@ -9,17 +9,12 @@
   			<span @click="goToItem('orgDynamics')">组织动态</span>
 				<span @click="goToItem('relatedPolicies')">相关政策</span>
   		</div>
-  	</div>
+  	</div> --> 
   	<div class="brumbWrap">
-  		<span>您的位置：社会影响>媒体报道</span>
+  		<span>您的位置：加入我们>伤友注册</span>
   	</div>
-  	<div class="content1Wrap" >
-      <div v-for="media, key in medias"  @click="goDetail(media.id)" :class="{'listWrap':true,'listactive':key==listactiveFlag}" @mouseenter="listin(key)" @mouseleave="listout(key)">
-        <div class="listContentWrap">
-          <p class="title">{{ media.title }}</p>
-        </div>
-				<hr class="content1Hr">
-      </div>
+  	<div class="form-container">
+
     </div>
   </div>
 </template>
@@ -103,15 +98,24 @@ export default {
 	background-color: #03A692;
 }
 .brumbWrap{
-	width: 600px;
+	width: 80%;
 	margin: 0 auto;
-	margin-top:5px;
+	margin-top:20px;
 	margin-bottom:25px;
 }
 .brumbWrap span{
 	font-size: 12px;
 	color: #666666;
 }
+
+.form-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top:20px;
+  min-height: 900px;
+  background: #03A692;
+}
+
 .contentWrap{
   width: 600px;
   margin: 0 auto;
